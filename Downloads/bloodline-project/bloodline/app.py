@@ -226,8 +226,7 @@ init()
 @app.route("/")
 def home():
     return render_template("index.html")
-if __name__ == "__main__":
-    app.run(debug=True, port=int(os.environ.get("PORT", 5000)))
+
 @app.route("/debug-routes")
 def debug_routes():
     return "<pre>" + "\n".join(
@@ -244,3 +243,7 @@ def diagnostic():
             str(rule) for rule in app.url_map.iter_rules()
         )
     }
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+print("JEEVA IMPORTED FILE:",__file__)
+print("JEEVA REGISTERED ROUTES:",app.url_map)
