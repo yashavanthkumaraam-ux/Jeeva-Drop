@@ -233,3 +233,4 @@ def debug_routes():
     return "<pre>" + "\n".join(
         sorted(str(rule) for rule in app.url_map.iter_rules())
     ) + "</pre>"
+print("JEEVA ROUTE CHECK:",app.url_map)
