@@ -247,3 +247,12 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 print("JEEVA IMPORTED FILE:",__file__)
 print("JEEVA REGISTERED ROUTES:",app.url_map)
+@app.route("/__deployment_check")
+def deployment_check():
+    return {
+        "status": "ok",
+        "app_file": __file__,
+        "routes": sorted(
+            str(rule) for rule in app.url_map.iter_rules()
+        )
+    }, 200
