@@ -234,3 +234,13 @@ def debug_routes():
         sorted(str(rule) for rule in app.url_map.iter_rules())
     ) + "</pre>"
 print("JEEVA ROUTE CHECK:",app.url_map)
+@app.route("/__diagnostic")
+def diagnostic():
+    return {
+        "diagnostic": "Jeeva Drop",
+        "app_file": app.import_name,
+        "root_path": app.root_path,
+        "routes": sorted(
+            str(rule) for rule in app.url_map.iter_rules()
+        )
+    }
