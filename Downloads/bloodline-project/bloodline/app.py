@@ -228,3 +228,8 @@ def home():
     return render_template("index.html")
 if __name__ == "__main__":
     app.run(debug=True, port=int(os.environ.get("PORT", 5000)))
+@app.route("/debug-routes")
+def debug_routes():
+    return "<pre>" + "\n".join(
+        sorted(str(rule) for rule in app.url_map.iter_rules())
+    ) + "</pre>"
