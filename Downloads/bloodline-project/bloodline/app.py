@@ -223,9 +223,8 @@ def reset():
     return jsonify(ok=True)
 
 init()
-
-if __name__ == "__main__":
-    app.run(debug=True, port=int(os.environ.get("PORT", 5000)))
 @app.route("/")
 def home():
-    render_template("index.html")
+    return render_template("index.html")
+if __name__ == "__main__":
+    app.run(debug=True, port=int(os.environ.get("PORT", 5000)))
